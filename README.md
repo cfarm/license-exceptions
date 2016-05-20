@@ -1,4 +1,3 @@
-#### CFPB Open Source Project Template Instructions
 
 
 1.
@@ -26,12 +25,9 @@ add link to license
 
 ----
 
-# Project Title
+# License exceptions
 
-**Description**:  Put a meaningful, short, plain-language description of what
-this project is trying to accomplish and why it matters.
-Describe the problem(s) this project solves.
-Describe how this software can improve the lives of its audience.
+**Description**:  Add a list of non-public domain node modules to your project's [TERMS](TERMS.md) Exceptions.
 
 Other things to include:
 
