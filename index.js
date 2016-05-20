@@ -44,7 +44,4 @@ function addExceptions(licenseData) {
     fs.writeFileSync('licenseList.md', formattedData, 'utf8');
 }
 
-
-
-
 exports.init = init();
