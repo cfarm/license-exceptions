@@ -15,28 +15,8 @@ var init = function() {
 }
 
 function addExceptions(licenseData) {
-    // var xhr = new XMLHttpRequest();
-    // var URL = 'licenses.json';
-
-    // xhr.open('GET', URL);
-
-    // xhr.send(null);
-
-    // xhr.onreadystatechange = function () {
-    //   if (xhr.readyState === 4) {
-    //     if (xhr.status === 200) {
-    //       onSuccess(xhr.responseText);
-    //     } else {
-    //       console.log('Error: ' + xhr.status);
-    //     }
-    //   }
-    // };
-        
-
-    // var onSuccess = function(response) {
 
       var licenses = licenseData;
-      // var page = document.getElementById('data');
       var formattedData;
 
       var licenseList = Object.keys(licenses).map(
@@ -60,29 +40,9 @@ function addExceptions(licenseData) {
 
         formattedData += name;          
 
-        // if (licenseType !== 'Public domain' && licenseType !== 'CC0-1.0' && licenseType !== 'Public Domain') {
-          // var listItem = document.createElement('li');
-          // var link = document.createElement('a');
-          // var nameText = document.createTextNode(name);
-          // var licenseText = document.createTextNode(': ' + licenseType);
-          // link.appendChild(nameText);
-          // link.href = repo;
-          // listItem.appendChild(link);
-          // listItem.appendChild(licenseText);
-          // page.appendChild(listItem);
-
-        // }
-
       }
 
-      
-    // };
-
-        // var dir = path.dirname(args.out);
-        // mkdirp.sync(dir);
-        //Remove the color tags
-        // formattedOutput = chalk.stripColor(formattedOutput);
-        fs.writeFileSync('licenseList.json', formattedData, 'utf8');
+    fs.writeFileSync('licenseList.json', formattedData, 'utf8');
 }
 
 
