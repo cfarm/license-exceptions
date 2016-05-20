@@ -5,8 +5,12 @@
 ```
 license-checker --exclude 'Public domain', 'Public Domain', 'public domain', 'CC0-1.0' --relativeLicensePath --customPath customFormatExample.json --json > licenses.json 
 ```
+run with markdown output
 
-@todo: add link to license
+@todo: 
+tests
+snyk
+add link to license
 
 1. Create a new project.
 2. Copy these files into the new project.

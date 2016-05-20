@@ -12,6 +12,7 @@
   "author": "Catherine Farman <cat@cfarman.com> (http://cfarman.com)",
   "license": "CC0-1.0",
   "devDependencies": {
+    "fs": "0.0.2",
     "license-checker": "^5.1.2"
   }
 }
