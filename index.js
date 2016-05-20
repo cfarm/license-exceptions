@@ -17,7 +17,7 @@ var init = function() {
 function addExceptions(licenseData) {
 
       var licenses = licenseData;
-      var formattedData;
+      var formattedData = '';
 
       var licenseList = Object.keys(licenses).map(
         function(license) {
@@ -37,12 +37,11 @@ function addExceptions(licenseData) {
         var licenseType = licenseType.replace(/\*$/, "");
         var repo = licenseList[i].repository;
         var name = licenseNames[i];
-
-        formattedData += name;          
-
+        var markItDown = '- [' + name + '](' + repo + '): ' + licenseType + '\n';
+        formattedData += markItDown;
       }
 
-    fs.writeFileSync('licenseList.json', formattedData, 'utf8');
+    fs.writeFileSync('licenseList.md', formattedData, 'utf8');
 }
 
 
