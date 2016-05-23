@@ -1,3 +1,7 @@
+# License Exceptions
+
+ Source code or other assets that are excluded from the [TERMS](TERMS.md). This list includes dependencies that may be licensed differently (not CC0-1.0) or are not in the public domain.
+
 - [abbrev](https://github.com/isaacs/abbrev-js): ISC
 - [ansi-regex](https://github.com/sindresorhus/ansi-regex): MIT
 - [ansi-styles](https://github.com/sindresorhus/ansi-styles): MIT

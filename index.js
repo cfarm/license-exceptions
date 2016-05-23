@@ -3,7 +3,7 @@ var checker = require('license-checker');
 
 function addExceptions(licenses) {
 
-      var formattedData = '';
+      var formattedData = '# License Exceptions\n\n Source code or other assets that are excluded from the [TERMS](TERMS.md). This list includes dependencies that may be licensed differently (not CC0-1.0) or are not in the public domain.\n\n';
 
       var licenseList = Object.keys(licenses).map(
         function(license) {
