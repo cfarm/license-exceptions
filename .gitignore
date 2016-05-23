@@ -7,8 +7,6 @@
 *.o
 *.so
 _site/
-licenses.html
-licenses.json
 
 # Packages #
 ############
