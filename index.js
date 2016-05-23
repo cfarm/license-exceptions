@@ -1,19 +1,6 @@
 var fs = require('fs');
 var checker = require('license-checker');
 
-var init = function() {
-    checker.init({
-        start: './'
-    }, function(json, err) {
-        if (err) {
-            //Handle error
-        } else {
-            //The sorted json data
-            addExceptions(json);
-        }
-    });
-}
-
 function addExceptions(licenseData) {
 
       var licenses = licenseData;
@@ -44,4 +31,15 @@ function addExceptions(licenseData) {
     fs.writeFileSync('licenseList.md', formattedData, 'utf8');
 }
 
-exports.init = init();
+exports.init = function() {
+    checker.init({
+        start: './'
+    }, function(json, err) {
+        if (err) {
+            //Handle error
+        } else {
+            //The sorted json data
+            addExceptions(json);
+        }
+    });
+}
