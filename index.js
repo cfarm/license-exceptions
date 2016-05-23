@@ -28,7 +28,7 @@ function addExceptions(licenseData) {
         formattedData += markItDown;
       }
 
-    fs.writeFileSync('licenseList.md', formattedData, 'utf8');
+    fs.writeFileSync('licenseExceptions.md', formattedData, 'utf8');
 }
 
 exports.init = function() {

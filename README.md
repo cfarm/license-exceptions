@@ -1,6 +1,21 @@
 
 
-1.
+1. `npm install license-exeptions --save-dev`
+2. add to your index.js:
+
+<!-- @todo: automate this step based on default js file structure -->
+
+```
+var licenseExceptions = require('license-exceptions');
+
+licenseExceptions.init();
+```
+3. run `node index.js`
+<!-- @todo: automate this step alongside above - one command -->
+4. update the _Exceptions_ section in the [TERMS](TERMS.md) to link to newly generated [licenseExceptions.md](licenseExceptions.md) if it doesn't already.
+5. run anytime you update package.json
+<!-- @todo: automate this step? -->
+
 ```
 license-checker --exclude 'Public domain', 'Public Domain', 'public domain', 'CC0-1.0' --relativeLicensePath --customPath customFormatExample.json --json > licenses.json 
 ```
