@@ -1,20 +1,13 @@
 var fs = require('fs');
 var checker = require('license-checker');
 
-function addExceptions(licenseData) {
+function addExceptions(licenses) {
 
-      var licenses = licenseData;
       var formattedData = '';
 
       var licenseList = Object.keys(licenses).map(
         function(license) {
           return licenses[license];
-        }
-      );
-
-      var licenseNames = Object.keys(licenses).map(
-        function(license) {
-          return license;
         }
       );
       
@@ -23,7 +16,10 @@ function addExceptions(licenseData) {
         // remove asterisk from license
         var licenseType = licenseType.replace(/\*$/, "");
         var repo = licenseList[i].repository;
-        var name = licenseNames[i];
+        var name = licenseList[i].name;
+        if (repo == undefined) {
+            repo = 'https://www.npmjs.com/package/' + name;
+        }
         var markItDown = '- [' + name + '](' + repo + '): ' + licenseType + '\n';
         formattedData += markItDown;
       }
@@ -33,7 +29,9 @@ function addExceptions(licenseData) {
 
 exports.init = function() {
     checker.init({
-        start: './'
+        start: './',
+        exclude: 'CC0-1.0, Public domain, public domain, Public Domain',
+        customPath: 'customFormatExample.json'
     }, function(json, err) {
         if (err) {
             //Handle error
