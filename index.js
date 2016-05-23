@@ -1,7 +1,7 @@
 var fs = require('fs');
 var checker = require('license-checker');
 
-function addExceptions(licenses) {
+function addExceptions(licenses, fileName) {
 
       var formattedData = '# License Exceptions\n\n Source code or other assets that are excluded from the [TERMS](TERMS.md). This list includes dependencies that may be licensed differently (not CC0-1.0) or are not in the public domain.\n\n';
 
@@ -36,8 +36,7 @@ exports.init = function() {
         if (err) {
             //Handle error
         } else {
-            //The sorted json data
-            addExceptions(json);
+            addExceptions(json, 'TERMS.md');
         }
     });
 }
