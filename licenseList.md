@@ -22,7 +22,7 @@
 - [jju@1.3.0](https://github.com/rlidwka/jju): WTFPL
 - [json-parse-helpfulerror@1.0.3](https://github.com/smikes/json-parse-helpfulerror): MIT
 - [license-checker@5.1.2](https://github.com/davglass/license-checker): BSD-3-Clause
-- [license-exceptions@1.0.0](undefined): CC0-1.0
+- [license-exceptions@1.1.1](undefined): CC0-1.0
 - [minimatch@3.0.0](https://github.com/isaacs/minimatch): ISC
 - [mkdirp@0.3.5](https://github.com/substack/node-mkdirp): MIT
 - [ms@0.7.1](https://github.com/guille/ms.js): MIT
