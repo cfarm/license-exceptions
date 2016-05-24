@@ -3,7 +3,20 @@
 var fs = require( 'fs' );
 var checker = require( 'license-checker' );
 
-function addExceptions( licenses, fileName ) {
+function getTermsFile( licenses, fileName ) {
+  fs.readFile( fileName, 'utf8', function( err, fileContents ) {
+    // console.log( fileContents );
+    var licenseOutput = addExceptions( licenses );
+    // console.log( licenseOutput );
+
+    var newTerms = fileContents + licenseOutput;
+    console.log( newTerms );
+
+    fs.writeFile( 'newTerms.md', newTerms, 'utf8' );
+  });
+}
+
+function addExceptions( licenses ) {
 
   var formattedData = '# License Exceptions\n\n Source code or other assets that are excluded from the [TERMS](TERMS.md). This list includes dependencies that may be licensed differently (not CC0-1.0) or are not in the public domain.\n\n';
 
@@ -26,7 +39,9 @@ function addExceptions( licenses, fileName ) {
     formattedData += markItDown;
   }
 
-  fs.writeFileSync( 'licenseExceptions.md', formattedData, 'utf8' );
+  return formattedData;
+
+  // fs.writeFileSync( 'licenseExceptions.md', formattedData, 'utf8' );
 }
 
 exports.init = function() {
@@ -39,7 +54,7 @@ exports.init = function() {
       // Handle error
       console.log( err );
     } else {
-      addExceptions( json, 'TERMS.md' );
+      getTermsFile( json, 'TERMS.md' );
     }
   } );
 };
