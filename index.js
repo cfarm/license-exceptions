@@ -5,12 +5,19 @@ var checker = require( 'license-checker' );
 
 function getTermsFile( licenses, fileName ) {
   fs.readFile( fileName, 'utf8', function( err, fileContents ) {
-    var licenseOutput = addExceptions( licenses );
-    var exceptionsContent = '## Exceptions';
-    var removeOldExceptions = fileContents.split( exceptionsContent )[0];
-    var newTerms = removeOldExceptions + licenseOutput;
+    if ( err && err.fileNotFound || err && err.code === 'ENOENT' ) {
+      console.log( 'File not found - you must add the ' + fileName + ' file to your project.' );
+    } else if ( err ) {
+      console.log( err );
+    } else {
+      var licenseOutput = addExceptions( licenses );
+      var exceptionsContent = '## Exceptions';
+      var removeOldExceptions = fileContents.split( exceptionsContent )[0];
+      var newTerms = removeOldExceptions + licenseOutput;
 
-    fs.writeFile( fileName, newTerms, 'utf8' );
+      fs.writeFile( fileName, newTerms, 'utf8' );
+    }
+
   });
 }
 
