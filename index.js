@@ -45,15 +45,17 @@ function addExceptions( licenses ) {
   }
 
   return formattedData;
-
-  // fs.writeFileSync( 'licenseExceptions.md', formattedData, 'utf8' );
 }
 
 exports.init = function() {
   checker.init( {
     start: './',
     exclude: 'CC0-1.0, Public domain, public domain, Public Domain',
-    customPath: 'customFormatExample.json'
+
+    // @todo fix path to be relative to node modules folder not project folder, write test!!!
+    // customPath: 'customFormatExample.json'
+    customPath: './node_modules/license-exceptions/customFormatExample.json'
+
   }, function( json, err ) {
     if ( err ) {
       // Handle error
