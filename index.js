@@ -1,42 +1,45 @@
-var fs = require('fs');
-var checker = require('license-checker');
+'use strict';
 
-function addExceptions(licenses, fileName) {
+var fs = require( 'fs' );
+var checker = require( 'license-checker' );
 
-      var formattedData = '# License Exceptions\n\n Source code or other assets that are excluded from the [TERMS](TERMS.md). This list includes dependencies that may be licensed differently (not CC0-1.0) or are not in the public domain.\n\n';
+function addExceptions( licenses, fileName ) {
 
-      var licenseList = Object.keys(licenses).map(
-        function(license) {
-          return licenses[license];
-        }
-      );
-      
-      for (var i = 0; i < licenseList.length; i++) {
-        var licenseType = String(licenseList[i].licenses);
-        // remove asterisk from license
-        var licenseType = licenseType.replace(/\*$/, "");
-        var repo = licenseList[i].repository;
-        var name = licenseList[i].name;
-        if (repo == undefined) {
-            repo = 'https://www.npmjs.com/package/' + name;
-        }
-        var markItDown = '- [' + name + '](' + repo + '): ' + licenseType + '\n';
-        formattedData += markItDown;
-      }
+  var formattedData = '# License Exceptions\n\n Source code or other assets that are excluded from the [TERMS](TERMS.md). This list includes dependencies that may be licensed differently (not CC0-1.0) or are not in the public domain.\n\n';
 
-    fs.writeFileSync('licenseExceptions.md', formattedData, 'utf8');
+  var licenseList = Object.keys( licenses ).map(
+    function( license ) {
+      return licenses[license];
+    }
+  );
+
+  for ( var i = 0; i < licenseList.length; i++ ) {
+    var licenseType = String( licenseList[i].licenses );
+    // remove asterisk from license
+    licenseType = licenseType.replace( /\*$/, '' );
+    var repo = licenseList[i].repository;
+    var name = licenseList[i].name;
+    if ( repo == undefined ) {
+      repo = 'https://www.npmjs.com/package/' + name;
+    }
+    var markItDown = '- [' + name + '](' + repo + '): ' + licenseType + '\n';
+    formattedData += markItDown;
+  }
+
+  fs.writeFileSync( 'licenseExceptions.md', formattedData, 'utf8' );
 }
 
 exports.init = function() {
-    checker.init({
-        start: './',
-        exclude: 'CC0-1.0, Public domain, public domain, Public Domain',
-        customPath: 'customFormatExample.json'
-    }, function(json, err) {
-        if (err) {
-            //Handle error
-        } else {
-            addExceptions(json, 'TERMS.md');
-        }
-    });
-}
+  checker.init( {
+    start: './',
+    exclude: 'CC0-1.0, Public domain, public domain, Public Domain',
+    customPath: 'customFormatExample.json'
+  }, function( json, err ) {
+    if ( err ) {
+      // Handle error
+      console.log( err );
+    } else {
+      addExceptions( json, 'TERMS.md' );
+    }
+  } );
+};
