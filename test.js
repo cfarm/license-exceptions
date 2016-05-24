@@ -4,7 +4,7 @@ var licenseExceptions = require( './index.js' );
 
 licenseExceptions.init();
 
-// check for existence of licenseExceptions.md
+// check for existence of licenses output
 
 
 // search file for excluded licenses:
