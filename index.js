@@ -5,7 +5,7 @@ var checker = require( 'license-checker' );
 var customFormatJSON = require( './customFormatExample.json' );
 
 exports.getTermsFile = function( licenses, fileName ) {
-  if (licenses.typeof !== Object) {
+  if (typeof licenses !== 'object') {
     throw new TypeError('licenses argument should be an object');
   }
   fs.readFile( fileName, 'utf8', function( err, fileContents ) {
