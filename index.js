@@ -2,15 +2,19 @@
 
 var fs = require( 'fs' );
 var checker = require( 'license-checker' );
+var customFormatJSON = require( './customFormatExample.json' );
 
-function getTermsFile( licenses, fileName ) {
+exports.getTermsFile = function( licenses, fileName ) {
+  if (licenses.typeof !== Object) {
+    throw new TypeError('licenses argument should be an object');
+  }
   fs.readFile( fileName, 'utf8', function( err, fileContents ) {
     if ( err && err.fileNotFound || err && err.code === 'ENOENT' ) {
-      console.log( 'File not found - you must add the ' + fileName + ' file to your project.' );
+      throw new Error('File not found - you must add the ' + fileName + ' file to your project.');
     } else if ( err ) {
-      console.log( err );
+      throw new Error(err);
     } else {
-      var licenseOutput = addExceptions( licenses );
+      var licenseOutput = exports.addExceptions( licenses );
       var exceptionsContent = '## Exceptions';
       var removeOldExceptions = fileContents.split( exceptionsContent )[0];
       var newTerms = removeOldExceptions + licenseOutput;
@@ -21,7 +25,7 @@ function getTermsFile( licenses, fileName ) {
   });
 }
 
-function addExceptions( licenses ) {
+exports.addExceptions = function( licenses ) {
 
   var formattedData = '## Exceptions\n\n Source code or other assets that are excluded from the terms. This list includes dependencies that may be licensed differently (not CC0-1.0) or are not in the public domain.\n\n';
 
@@ -47,21 +51,25 @@ function addExceptions( licenses ) {
   return formattedData;
 }
 
-exports.init = function() {
+exports.init = function(fileName) {
+  if (fileName === undefined) {
+    fileName = 'TERMS.md';
+  }
   checker.init( {
     start: './',
     exclude: 'CC0-1.0, Public domain, public domain, Public Domain',
-
     // @todo fix path to be relative to node modules folder not project folder, write test!!!
-    // customPath: 'customFormatExample.json'
-    customPath: './node_modules/license-exceptions/customFormatExample.json'
+    customPath: 'customFormatExample.json' // for this module
+    // has to point to node_modules path for anything installing this
+    // customPath: './node_modules/license-exceptions/customFormatExample.json'
+    // customPath: customFormatJSON
 
   }, function( json, err ) {
     if ( err ) {
       // Handle error
       console.log( err );
     } else {
-      getTermsFile( json, 'TERMS.md' );
+      exports.getTermsFile( json, fileName );
     }
   } );
 };

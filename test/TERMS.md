@@ -46,10 +46,3 @@ author or the affirmer.
 
 
 ## Exceptions
-
- Source code or other assets that are excluded from the terms. This list includes dependencies that may be licensed differently (not CC0-1.0) or are not in the public domain.
-
-- [undefined](https://www.npmjs.com/package/undefined): undefined
-- [undefined](https://www.npmjs.com/package/undefined): undefined
-- [undefined](https://www.npmjs.com/package/undefined): undefined
-- [undefined](https://www.npmjs.com/package/undefined): undefined

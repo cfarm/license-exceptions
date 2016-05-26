@@ -1,6 +1,6 @@
 'use strict';
 
-var licenseExceptions = require( './index.js' );
+var licenseExceptions = require( '../index.js' );
 
 licenseExceptions.init();
 
