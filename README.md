@@ -1,83 +1,57 @@
 
 
-1. `npm install license-exeptions --save-dev`
-2. add to your index.js:
-
-<!-- @todo: automate this step based on default js file structure -->
-
-```
-var licenseExceptions = require('license-exceptions');
-
-licenseExceptions.init();
-```
-3. run `node index.js`
-<!-- @todo: automate this step alongside above - one command -->
-4. update the _Exceptions_ section in the [TERMS](TERMS.md) to link to newly generated [licenseExceptions.md](licenseExceptions.md) if it doesn't already.
-5. run anytime you update package.json
-<!-- @todo: automate this step? -->
-
-```
-license-checker --exclude 'Public domain', 'Public Domain', 'public domain', 'CC0-1.0' --relativeLicensePath --customPath customFormatExample.json --json > licenses.json 
-```
-run with markdown output
-
 @todo: 
-tests
-snyk
-add link to license
 
-1. Create a new project.
-2. Copy these files into the new project.
-3. Update the README, replacing the contents below as prescribed.
-4. Add any libraries, assets, or hard dependencies whose source code will be included
-   in the project's repository to the _Exceptions_ section in the [TERMS](TERMS.md).
-  - If no exceptions are needed, remove that section from TERMS.
-5. If working with an existing code base, answer the questions on the [open source checklist](opensource-checklist.md)
-6. Delete these instructions and everything up to the _Project Title_ from the README.
-7. Write some great software and tell people about it.
+- fix customPath
+- tests
+- travis
+- snyk
+- update open-source-project-template
 
-> Keep the README fresh! It's the first thing people see and will make the initial impression.
+enhancements:
 
-----
+- add link to license
+- automate install steps
+- add to setup.sh for projects that use that
 
 # License exceptions
 
-**Description**:  Add a list of non-public domain node modules to your project's [TERMS](TERMS.md) Exceptions.
+A Node package to add a list of non-public domain Node.js modules to your project's [TERMS](TERMS.md) Exceptions.
 
-Other things to include:
-
-  - **Technology stack**: Indicate the technological nature of the software, including primary programming language(s) and whether the software is intended as standalone or as a module in a framework or other ecosystem.
-  - **Status**:  Alpha, Beta, 1.1, etc. It's OK to write a sentence, too. The goal is to let interested people know where this project is at. This is also a good place to link to the [CHANGELOG](CHANGELOG.md).
-  - **Links to production or demo instances**
-  - Describe what sets this apart from related-projects. Linking to another doc or page is OK if this can't be expressed in a sentence or two.
-
-
-**Screenshot**: If the software has visual components, place a screenshot after the description; e.g.,
-
-![](https://raw.githubusercontent.com/cfpb/open-source-project-template/master/screenshot.png)
-
+Uses the [License checker](https://github.com/davglass/license-checker) tool to determine the license for your software's Node.js dependencies, and outputs the list to CFPB's standard [TERMS](TERMS.md) file to be included with all of our open source software.
 
 ## Dependencies
 
-Describe any dependencies that must be installed for this software to work.
-This includes programming languages, databases or other storage mechanisms, build tools, frameworks, and so forth.
-If specific versions of other software are required, or known not to work, call that out.
+- [Node.js](https://nodejs.org/en/)
 
 ## Installation
 
-Detailed instructions on how to install, configure, and get the project running.
-This should be frequently tested to ensure reliability. Alternatively, link to
-a separate [INSTALL](INSTALL.md) document.
+1. First install [Node.js](https://nodejs.org/en/). Then in your project's root directory:
+  
+  ```
+  npm install license-exeptions --save-dev
+  ```
+1. Add the following script to your index.js or a custom JS file:
 
-## Configuration
+  ```javascript
+  'use strict';
 
-If the software is configurable, describe it in detail, either here or in other documentation to which you link.
+  var licenseExceptions = require('license-exceptions');
+
+  licenseExceptions.init();
+  ```
 
 ## Usage
 
-Show users how to use the software.
-Be specific.
-Use appropriate formatting when showing code snippets.
+1. Run the script you installed:
+  
+  ```
+  node index.js
+  ```
+1. Commit the updated `TERMS.md` file.
+1. Run anytime you update `package.json`.
+
+<!-- @todo: automate this step - add to setup.sh -->
 
 ## How to test the software
 
