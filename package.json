@@ -1,6 +1,6 @@
 {
   "name": "license-exceptions",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "list licenses not in the public domain for node dependencies",
   "main": "index.js",
   "keywords": [
