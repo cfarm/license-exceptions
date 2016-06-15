@@ -41,10 +41,11 @@ exports.addExceptions = function( licenses ) {
     licenseType = licenseType.replace( /\*$/, '' );
     var repo = licenseList[i].repository;
     var name = licenseList[i].name;
+    var version = licenseList[i].version;
     if ( repo == undefined ) {
       repo = 'https://www.npmjs.com/package/' + name;
     }
-    var markItDown = '- [' + name + '](' + repo + '): ' + licenseType + '\n';
+    var markItDown = '- [' + name + ' ' + version + '](' + repo + '): ' + licenseType + '\n';
     formattedData += markItDown;
   }
 
