@@ -29,7 +29,7 @@ Uses the [License checker](https://github.com/davglass/license-checker) tool to 
 1. First install [Node.js](https://nodejs.org/en/). Then in your project's root directory:
   
   ```
-  npm install license-exeptions --save-dev
+  npm install license-exceptions --save-dev
   ```
 1. Add the following script to your index.js or a custom JS file:
 
